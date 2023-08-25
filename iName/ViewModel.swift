@@ -12,6 +12,9 @@ import SwiftUI
 @MainActor class ViewModel: ObservableObject {
     // ContentView
     @Published var items: [Item]
+    var sortedItems: [Item] {
+        items.sorted()
+    }
     let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedItems")
     
     @Published var isAddSheetActive = false
@@ -56,5 +59,4 @@ import SwiftUI
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
     }
-    
 }

@@ -13,13 +13,23 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(viewModel.items.sorted(), id: \.name) { item in
-                    HStack {
-                        Image(uiImage: item.uiImage ?? UIImage())
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 75)
-                        Text(item.name)
+                List() {
+                    ForEach(viewModel.sortedItems, id: \.name) { item in
+                        HStack {
+                            Image(uiImage: item.uiImage ?? UIImage())
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 125, height: 100)
+                            Text(item.name)
+                        }
+                    }
+                    .onDelete { offset in
+                        for i in offset {
+                            if let found = viewModel.items.firstIndex(where: { $0 == viewModel.sortedItems[i] }) {
+                                viewModel.items.remove(at: found)
+                            }
+                        }
+                        viewModel.saveData()
                     }
                 }
                 
