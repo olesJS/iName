@@ -22,14 +22,5 @@ extension ContentView {
                 items = []
             }
         }
-        
-        func saveData() {
-            do {
-                let data = try JSONEncoder().encode(items)
-                try data.write(to: savePath, options: [.atomic, .completeFileProtection])
-            } catch {
-                print("saveData() error")
-            }
-        }
     }
 }

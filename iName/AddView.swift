@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AddView: View {
-    @StateObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: ViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -33,17 +34,18 @@ struct AddView: View {
                 viewModel.loadImage()
             }
             .buttonStyle(.bordered)
+            
+            Button("Save") {
+                viewModel.items.append(Item(name: viewModel.name, imageData: viewModel.inputImage?.jpegData(compressionQuality: 0.8) ?? Data()))
+                viewModel.saveData()
+                viewModel.name = ""
+                viewModel.inputImage = UIImage()
+                dismiss()
+            }
+            .buttonStyle(.bordered)
+            .disabled(viewModel.isDisabled)
         }
         .navigationTitle("Add item")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            Button("Save") {
-                
-            }
-        }
-    }
-    
-    init() {
-        _viewModel = StateObject(wrappedValue: ViewModel())
     }
 }

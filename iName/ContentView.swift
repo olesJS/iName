@@ -13,8 +13,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(viewModel.items, id: \.name) { item in
-                    Text(item.name)
+                List(viewModel.items.sorted(), id: \.name) { item in
+                    HStack {
+                        Image(uiImage: item.uiImage ?? UIImage())
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 75)
+                        Text(item.name)
+                    }
                 }
                 
                 Spacer()
@@ -30,6 +36,7 @@ struct ContentView: View {
                 .buttonStyle(.bordered)
                 .sheet(isPresented: $viewModel.isAddSheetActive) {
                     AddView()
+                        .environmentObject(viewModel)
                 }
             }
             .navigationTitle("iName")
