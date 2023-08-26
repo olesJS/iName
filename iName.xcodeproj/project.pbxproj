@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF6259F12A9A4E5000561A75 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6259F02A9A4E5000561A75 /* InfoView.swift */; };
 		AFFFC5722A98E74400F714A7 /* iNameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFC5712A98E74400F714A7 /* iNameApp.swift */; };
 		AFFFC5742A98E74400F714A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFFC5732A98E74400F714A7 /* ContentView.swift */; };
 		AFFFC5762A98E74500F714A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFFFC5752A98E74500F714A7 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF6259F02A9A4E5000561A75 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		AFFFC56E2A98E74400F714A7 /* iName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFFFC5712A98E74400F714A7 /* iNameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iNameApp.swift; sourceTree = "<group>"; };
 		AFFFC5732A98E74400F714A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				AFFFC5712A98E74400F714A7 /* iNameApp.swift */,
 				AFFFC5732A98E74400F714A7 /* ContentView.swift */,
+				AF6259F02A9A4E5000561A75 /* InfoView.swift */,
 				AFFFC5852A98FCD800F714A7 /* AddView.swift */,
 				AFFFC58D2A99386D00F714A7 /* ViewModel.swift */,
 				AFFFC58B2A98FF0F00F714A7 /* ImagePicker.swift */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6259F12A9A4E5000561A75 /* InfoView.swift in Sources */,
 				AFFFC5842A98E9F100F714A7 /* Item.swift in Sources */,
 				AFFFC58E2A99386D00F714A7 /* ViewModel.swift in Sources */,
 				AFFFC5742A98E74400F714A7 /* ContentView.swift in Sources */,

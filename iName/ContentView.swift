@@ -15,12 +15,16 @@ struct ContentView: View {
             VStack {
                 List() {
                     ForEach(viewModel.sortedItems, id: \.name) { item in
-                        HStack {
-                            Image(uiImage: item.uiImage ?? UIImage())
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 125, height: 100)
-                            Text(item.name)
+                        NavigationLink {
+                            InfoView(infoItem: item)
+                        } label: {
+                            HStack {
+                                Image(uiImage: item.uiImage ?? UIImage())
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 125, height: 100)
+                                Text(item.name)
+                            }
                         }
                     }
                     .onDelete { offset in
