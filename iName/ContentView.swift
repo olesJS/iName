@@ -28,7 +28,11 @@ struct ContentView: View {
                         }
                     }
                     .onDelete { offset in
-                        viewModel.deleteRow(offsets: offset)
+                        if viewModel.isDataUnlocked {
+                            viewModel.deleteRow(offsets: offset)
+                        } else {
+                            viewModel.authenticate()
+                        }
                     }
                 }
                 

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+import LocalAuthentication
 
 @MainActor class ViewModel: ObservableObject {
     // ContentView
@@ -18,6 +19,7 @@ import SwiftUI
     let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedItems")
     
     @Published var isAddSheetActive = false
+    @Published var isDataUnlocked = false
     
     // AddView
     @Published var name: String = ""
@@ -60,6 +62,7 @@ import SwiftUI
         image = Image(uiImage: inputImage)
     }
     
+    // deleting row from sorted list
     func deleteRow(offsets: IndexSet) {
         for offset in offsets {
             if let found = items.firstIndex(where: { $0 == sortedItems[offset] }) {
@@ -67,5 +70,21 @@ import SwiftUI
             }
         }
         saveData()
+    }
+    
+    func authenticate() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "You need pass identification to enable deleting items"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                if success {
+                    Task { @MainActor in
+                        self.isDataUnlocked = true
+                    }
+                }
+            }
+        }
     }
 }
