@@ -59,4 +59,13 @@ import SwiftUI
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
     }
+    
+    func deleteRow(offsets: IndexSet) {
+        for offset in offsets {
+            if let found = items.firstIndex(where: { $0 == sortedItems[offset] }) {
+                items.remove(at: found)
+            }
+        }
+        saveData()
+    }
 }

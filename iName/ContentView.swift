@@ -28,12 +28,7 @@ struct ContentView: View {
                         }
                     }
                     .onDelete { offset in
-                        for i in offset {
-                            if let found = viewModel.items.firstIndex(where: { $0 == viewModel.sortedItems[i] }) {
-                                viewModel.items.remove(at: found)
-                            }
-                        }
-                        viewModel.saveData()
+                        viewModel.deleteRow(offsets: offset)
                     }
                 }
                 
